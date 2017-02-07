@@ -1,0 +1,326 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8A450F011DB16FBB0056E524 /* Procreate Viewer.qlgenerator in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A72D2381DAD3D6C0031F0E4 /* Procreate Viewer.qlgenerator */; };
+		8A72D23C1DAD3D6C0031F0E4 /* GenerateThumbnailForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A72D23B1DAD3D6C0031F0E4 /* GenerateThumbnailForURL.m */; };
+		8A72D23E1DAD3D6C0031F0E4 /* GeneratePreviewForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A72D23D1DAD3D6C0031F0E4 /* GeneratePreviewForURL.m */; };
+		8A72D2401DAD3D6C0031F0E4 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A72D23F1DAD3D6C0031F0E4 /* main.c */; };
+		8ACC3BC01DF077A7001DCD0F /* ProcreateImageData in Resources */ = {isa = PBXBuildFile; fileRef = 8ACC3BBF1DF077A7001DCD0F /* ProcreateImageData */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8A450F001DB16FA90056E524 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "~/Library/QuickLook";
+			dstSubfolderSpec = 0;
+			files = (
+				8A450F011DB16FBB0056E524 /* Procreate Viewer.qlgenerator in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8A72D2381DAD3D6C0031F0E4 /* Procreate Viewer.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Procreate Viewer.qlgenerator"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A72D23B1DAD3D6C0031F0E4 /* GenerateThumbnailForURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenerateThumbnailForURL.m; sourceTree = "<group>"; };
+		8A72D23D1DAD3D6C0031F0E4 /* GeneratePreviewForURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeneratePreviewForURL.m; sourceTree = "<group>"; };
+		8A72D23F1DAD3D6C0031F0E4 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		8A72D2411DAD3D6C0031F0E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8ACC3BBF1DF077A7001DCD0F /* ProcreateImageData */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ProcreateImageData; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8A72D2341DAD3D6C0031F0E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8A72D22E1DAD3D6C0031F0E4 = {
+			isa = PBXGroup;
+			children = (
+				8A72D23A1DAD3D6C0031F0E4 /* Procreate Viewer */,
+				8A72D2391DAD3D6C0031F0E4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8A72D2391DAD3D6C0031F0E4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8A72D2381DAD3D6C0031F0E4 /* Procreate Viewer.qlgenerator */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8A72D23A1DAD3D6C0031F0E4 /* Procreate Viewer */ = {
+			isa = PBXGroup;
+			children = (
+				8A72D23B1DAD3D6C0031F0E4 /* GenerateThumbnailForURL.m */,
+				8A72D23D1DAD3D6C0031F0E4 /* GeneratePreviewForURL.m */,
+				8A72D23F1DAD3D6C0031F0E4 /* main.c */,
+				8A72D2411DAD3D6C0031F0E4 /* Info.plist */,
+				8ACC3BBF1DF077A7001DCD0F /* ProcreateImageData */,
+			);
+			path = "Procreate Viewer";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8A72D2351DAD3D6C0031F0E4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8A72D2371DAD3D6C0031F0E4 /* Procreate Viewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A72D2441DAD3D6C0031F0E4 /* Build configuration list for PBXNativeTarget "Procreate Viewer" */;
+			buildPhases = (
+				8A72D2331DAD3D6C0031F0E4 /* Sources */,
+				8A72D2341DAD3D6C0031F0E4 /* Frameworks */,
+				8A72D2351DAD3D6C0031F0E4 /* Headers */,
+				8A72D2361DAD3D6C0031F0E4 /* Resources */,
+				8A450F001DB16FA90056E524 /* CopyFiles */,
+				8A450EFF1DB16F820056E524 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Procreate Viewer";
+			productName = "Procreate Viewer";
+			productReference = 8A72D2381DAD3D6C0031F0E4 /* Procreate Viewer.qlgenerator */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8A72D22F1DAD3D6C0031F0E4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Jarom Vogel";
+				TargetAttributes = {
+					8A72D2371DAD3D6C0031F0E4 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 2R6RQYT69Y;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8A72D2321DAD3D6C0031F0E4 /* Build configuration list for PBXProject "Procreate Viewer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8A72D22E1DAD3D6C0031F0E4;
+			productRefGroup = 8A72D2391DAD3D6C0031F0E4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8A72D2371DAD3D6C0031F0E4 /* Procreate Viewer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8A72D2361DAD3D6C0031F0E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8ACC3BC01DF077A7001DCD0F /* ProcreateImageData in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8A450EFF1DB16F820056E524 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "qlmanage -r\nqlmanage -r cache\nkillall Finder\n\nqlmanage -t ~/TEST.procreate";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8A72D2331DAD3D6C0031F0E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A72D23C1DAD3D6C0031F0E4 /* GenerateThumbnailForURL.m in Sources */,
+				8A72D23E1DAD3D6C0031F0E4 /* GeneratePreviewForURL.m in Sources */,
+				8A72D2401DAD3D6C0031F0E4 /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		8A72D2421DAD3D6C0031F0E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		8A72D2431DAD3D6C0031F0E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		8A72D2451DAD3D6C0031F0E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2R6RQYT69Y;
+				INFOPLIST_FILE = "Procreate Viewer/Info.plist";
+				INSTALL_PATH = /Library/QuickLook;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jaromvogel.Procreate-Viewer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = qlgenerator;
+			};
+			name = Debug;
+		};
+		8A72D2461DAD3D6C0031F0E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2R6RQYT69Y;
+				INFOPLIST_FILE = "Procreate Viewer/Info.plist";
+				INSTALL_PATH = /Library/QuickLook;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jaromvogel.Procreate-Viewer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = qlgenerator;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8A72D2321DAD3D6C0031F0E4 /* Build configuration list for PBXProject "Procreate Viewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A72D2421DAD3D6C0031F0E4 /* Debug */,
+				8A72D2431DAD3D6C0031F0E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A72D2441DAD3D6C0031F0E4 /* Build configuration list for PBXNativeTarget "Procreate Viewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A72D2451DAD3D6C0031F0E4 /* Debug */,
+				8A72D2461DAD3D6C0031F0E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8A72D22F1DAD3D6C0031F0E4 /* Project object */;
+}
