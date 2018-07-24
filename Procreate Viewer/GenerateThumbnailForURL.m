@@ -128,24 +128,94 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
         }
         
         if ([file_extension isEqual: @"brush"]) {
-            properties = @{(__bridge NSString *) kQLThumbnailPropertyIconFlavorKey: @(kQLThumbnailIconGlossFlavor) };
+            properties = @{(__bridge NSString *) kQLThumbnailPropertyIconFlavorKey: @(kQLThumbnailIconPlainFlavor) };
         
             CGImageRef imageref = image.CGImage;
             
-//            CGRect rect = CGRectMake(0, 0, image.size.width, image.size.width);
             CGSize size = CGSizeMake(image.size.width, image.size.height);
             
             CGContextRef ctxt = QLThumbnailRequestCreateContext(thumbnail, size, true, (__bridge CFDictionaryRef)(properties));
-//            CGContextAddEllipseInRect(ctxt, rect);
-//            CGContextClip(ctxt);
             CGContextSetRGBFillColor(ctxt, 0, 0, 0, 1);
-            CGContextFillRect(ctxt, (CGRect){CGPointZero, size});
-            CGContextDrawImage(ctxt, CGRectMake(20, 35, image.size.width - 40, image.size.height - 40), imageref);
-//            CGContextDrawImage(ctxt, CGRectMake(size.width - 170, 20, 140, 140), logoRef);
-//            CGContextDrawImage(ctxt, rect, logoRef);
+            CGContextFillRect(ctxt, CGRectMake(0, 0, size.width, size.height));
+            CGContextSetRGBFillColor(ctxt, 1, 1, 1, 1);
+            CGContextDrawImage(ctxt, CGRectMake(0, 0, size.width, size.height), imageref);
             QLThumbnailRequestFlushContext(thumbnail, ctxt);
             CGContextRelease(ctxt);
+            
         }
+        
+    }
+
+    if ([file_extension isEqual: @"brushset"]) {
+        // Figure out what to do with brush sets here...
+        NSTask *unzipTask = [NSTask new];
+        [unzipTask setLaunchPath:@"/usr/bin/unzip"];
+        [unzipTask setStandardOutput:[NSPipe pipe]];
+        [unzipTask setArguments:@[@"-p", [URL path], @"brushset.plist"]];
+        [unzipTask launch];
+
+        thumbdata = [[[unzipTask standardOutput] fileHandleForReading] readDataToEndOfFile];
+        NSError *error = nil;
+        NSDictionary *plistdict = [NSPropertyListSerialization propertyListWithData:thumbdata options:NSPropertyListImmutable format:NULL error:&error];
+        
+        NSArray *brusheslist = [plistdict objectForKey:@"brushes"];
+
+        NSDictionary *properties;
+        properties = @{(__bridge NSString *) kQLThumbnailPropertyIconFlavorKey: @(kQLThumbnailIconPlainFlavor) };
+        CGSize thumbsize = CGSizeMake(860, 600);
+        CGContextRef ctxt = QLThumbnailRequestCreateContext(thumbnail, thumbsize, true, (__bridge CFDictionaryRef)(properties));
+        CGContextSetRGBFillColor(ctxt, 0, 0, 0, 1);
+        CGContextFillRect(ctxt, CGRectMake(0.0, 0.0, thumbsize.width, thumbsize.height));
+        CGContextSetRGBFillColor(ctxt, 1, 1, 1, 1);
+
+        
+        int counter = 0;
+        unsigned long limit = 5;
+        
+        if ([brusheslist count] <= 6) {
+            limit = [brusheslist count] - 1;
+        }
+        
+        while (counter <= limit) {
+            
+            NSString * brushfolder = brusheslist[counter];
+            NSString *brushpath = [brushfolder stringByAppendingString:@"/QuickLook/Thumbnail.png"];
+            
+            NSTask *unzipTask2 = [NSTask new];
+            [unzipTask2 setLaunchPath:@"/usr/bin/unzip"];
+            [unzipTask2 setStandardOutput:[NSPipe pipe]];
+            [unzipTask2 setArguments:@[@"-p", [URL path], brushpath]];
+            [unzipTask2 launch];
+            
+            NSData *brushdata = [[[unzipTask2 standardOutput] fileHandleForReading] readDataToEndOfFile];
+            
+            NSBitmapImageRep * image = [NSBitmapImageRep imageRepWithData:brushdata];
+            
+            CGImageRef imageref = image.CGImage;
+            
+            CGSize size = CGSizeMake(image.size.width/2, image.size.height/2);
+            size = CGSizeMake(420, 200);
+            
+            CGContextSetRGBFillColor(ctxt, 1, 1, 1, 1);
+            
+            int position_x = (counter % 2) * 420;
+            int position_y = 400;
+            if (counter > 1 && counter <= 3) {
+                position_y = 200;
+            }
+            if (counter > 3) {
+                position_y = 0;
+            }
+            
+            CGRect smallthumbrect = CGRectMake(position_x, position_y, size.width, size.height);
+            
+            CGContextDrawImage(ctxt, smallthumbrect, imageref);
+            
+            counter += 1;
+        }
+        
+        QLThumbnailRequestFlushContext(thumbnail, ctxt);
+        CGContextRelease(ctxt);
     }
     
     if ([file_extension isEqual: @"swatches"]) {

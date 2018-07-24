@@ -1,23 +1,28 @@
 import sys
+import io
 import math
 import zipfile
 from biplist import readPlist
-import os
 import lzo
-import shutil
 from PIL import Image
+from multiprocessing import Pool
+
 
 procreatefile = sys.argv[-1]
 zipref = zipfile.ZipFile(procreatefile, 'r')
-zipref.extractall('./temp')
 
-plist = readPlist('./temp/Document.archive')
+plistdata = zipref.read('Document.archive')
+plistbytes = io.BytesIO(plistdata)
+plist = readPlist(plistbytes)
 objects = plist.get('$objects')
 composite_number = objects[1].get('composite').integer
 composite_key_number = objects[composite_number].get('UUID').integer
 composite_key = objects[composite_key_number]
-base = './temp/' + composite_key + '/'
-filelist = os.listdir(base)
+
+allfiles = zipref.namelist()
+composite_files = list(filter(lambda x: composite_key in x, allfiles))
+filelist = list(map(lambda x: x.strip(composite_key).strip('/'), composite_files))
+
 imagesize_string = objects[objects[1].get('size').integer]
 imagesize = imagesize_string.strip('{').strip('}').split(', ')
 imagesize[0] = int(imagesize[0])
@@ -46,13 +51,10 @@ if imagesize[1] % tilesize != 0:
 # iterate through chunks
 # decompress them
 # create images
-# add those images to composite image
-for (index, filename) in enumerate(filelist):
-
+def processChunk(filename):
     # Get row and column from filename
     column = int(filename.strip('.chunk').split('~')[0])
     row = int(filename.strip('.chunk').split('~')[1]) + 1
-
     chunk_tilesize = {
         "x": tilesize,
         "y": tilesize
@@ -65,13 +67,12 @@ for (index, filename) in enumerate(filelist):
         chunk_tilesize['y'] = tilesize - differencey
 
     # read the actual data and create an image
-    file = open(base + filename)
-    data = file.read()
+    file = zipref.read(composite_key + '/' + filename)
     # 262144 is the final byte size of the pixel data for 256x256 square.
     # This is based on 256*256*4 (width * height * 4 bytes per pixel)
     # finalsize is chunk width * chunk height * 4 bytes per pixel
     finalsize = chunk_tilesize['x'] * chunk_tilesize['y'] * 4
-    decompressed = lzo.decompress(data, False, finalsize)
+    decompressed = lzo.decompress(file, False, finalsize)
     # Will need to know how big each tile is instead of just saying 256
     tile = Image.frombytes('RGBA', (chunk_tilesize['x'],chunk_tilesize['y']), decompressed)
     # Tile starts upside down, flip it
@@ -83,9 +84,24 @@ for (index, filename) in enumerate(filelist):
     if (row == rows):
         positiony = 0
 
-    # Add image to canvas
-    canvas.paste(tile, (positionx,positiony))
+    return (tile, (positionx, positiony))
 
+
+# for (filename) in filelist:
+#   processChunk(filename)
+
+# Same as commented out for loop above, but multi-threaded
+p = Pool()
+tilelist = p.map(processChunk, filelist)
+p.close()
+p.join()
+
+# Add each tile to composite image
+# (This won't work in the multithreaded function for some reason)
+for tile in tilelist:
+    canvas.paste(tile[0], tile[1])
+
+# Make sure the image appears in the correct orientation
 if orientation == 3:
     canvas = canvas.rotate(90, expand=True)
 elif orientation == 4:
@@ -102,6 +118,6 @@ if v_flipped == 1 and (orientation == 1 or orientation == 2):
 if v_flipped == 1 and (orientation == 3 or orientation == 4):
     canvas = canvas.transpose(Image.FLIP_LEFT_RIGHT)
 
-#canvas.show()
-canvas.save(name + ".png")
-shutil.rmtree('./temp')
+# canvas.show()
+canvas.save(name + ".BMP")
+print("Image saved to current directory")
